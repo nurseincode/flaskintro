@@ -1,0 +1,4 @@
+# Python / Flask ignores
+.venv/
+__pycache__/
+*.pyc
