@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
@@ -33,7 +33,8 @@ def all_products():
 
 @app.route('/can-vote')
 def can_vote():
-    age = 20
+    age = int(request.args.get('age'))
+    # age = 14
     if age >= 18:
         return {"message": 'You can Vote!', "can_vote": True}
     else:
