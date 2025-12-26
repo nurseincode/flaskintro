@@ -31,6 +31,22 @@ def another_route():
 def all_products():
     return jsonify(products)
 
+# Get product with id == 1
+# @app.route('/products/1')
+# Hardcode
+# def product_1():
+#     return products[0]
+
+# Same results with filter + lambda # Alternative == list comprehension
+
+@app.route('/products/<int:id>')
+def one_product(id):
+    # print(type(id)) # DEBUG
+    filtered_products = list(filter(lambda p: p['id'] == id, products))
+    # print(list(filtered_products)) # DEBUG
+    return filtered_products[0]
+
+
 @app.route('/can-vote')
 def can_vote():
     age = int(request.args.get('age'))
