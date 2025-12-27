@@ -46,6 +46,11 @@ def one_product(id):
     # print(list(filtered_products)) # DEBUG
     return filtered_products[0]
 
+# POST /products (create a new product)
+@app.route('/products', methods=['POST'])
+def create_product():
+    print('Called create_product')
+    pass
 
 @app.route('/can-vote')
 def can_vote():
