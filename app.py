@@ -16,6 +16,13 @@ products = [
 ]
 # print(type(products))
 
+next_id = len(products) + 1
+
+def get_next_id():
+    global next_id
+    next_id += 1
+    return next_id - 1
+
 @app.route('/')
 def hello():
     return '<h1>Hello World!, Goodbye!</h1>'
@@ -49,8 +56,15 @@ def one_product(id):
 # POST /products (create a new product)
 @app.route('/products', methods=['POST'])
 def create_product():
-    print('Called create_product')
-    pass
+    # print('Called create_product')
+    # print(request.headers)
+    # print(type(request.get_json()))
+    global next_id
+    product = request.get_json()
+    product['id'] = next_id
+    next_id += 1
+    products.append(product)
+    return product
 
 @app.route('/can-vote')
 def can_vote():
