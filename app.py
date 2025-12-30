@@ -61,8 +61,7 @@ def create_product():
     # print(type(request.get_json()))
     global next_id
     product = request.get_json()
-    product['id'] = next_id
-    next_id += 1
+    product['id'] = get_next_id()
     products.append(product)
     return product
 
